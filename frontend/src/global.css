@@ -1,0 +1,24 @@
+:root {
+  --primary: #348789;
+  --secundary: #008489;
+  --gray-50: #0000ff;
+  --gray-100: #97909050;
+  --gray-200: #53565350;
+  --gray-300: #7cb388;
+  --white: #ffffff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  max-width: 1340px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1 rem;
+  padding-right: 1 rem;
+  width: 100%;
+}
