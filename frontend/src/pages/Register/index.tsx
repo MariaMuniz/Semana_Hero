@@ -9,6 +9,7 @@ import * as yup from "yup";
 import {BsPersonFill}from 'react-icons/bs';
 import {AiOutlineMail}from 'react-icons/ai';
 import {RiLockPasswordFill}from 'react-icons/ri';
+import { api } from '../../server';
 
 
 interface IFormValue{
@@ -35,9 +36,15 @@ export function Register(){
   const { register, handleSubmit,formState:{errors}}=useForm<IFormValue>
   ({resolver: yupResolver(schema),
   });
-  const submit =handleSubmit((data) =>{
-    console.log(data)
-      })
+  const submit =handleSubmit(async(data) =>{
+
+   const result = await api.post("/users", {
+      name:data.name,
+      email:data.email,
+      password:data.password
+    });
+    console.log(result);
+      });
 
 
 return(
