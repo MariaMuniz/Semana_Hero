@@ -6,7 +6,7 @@ import {useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Button } from '../../components/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {AiOutlineMail}from 'react-icons/ai';
 import {RiLockPasswordFill}from 'react-icons/ri';
 
@@ -20,7 +20,7 @@ import { useAuth } from '../../hooks/Auth';
 
 export function Login(){
   const {sigIn}=useAuth()
-const navigate= useNavigate()
+
 
   const schema = yup.object({
     email:yup
@@ -37,7 +37,7 @@ const navigate= useNavigate()
   const submit =handleSubmit(async({email,password}) =>{
     try {
       sigIn({email, password});
-      navigate('/dashboard');
+   
     } catch (error) {
       console.log(error)
     }
