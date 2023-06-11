@@ -33,14 +33,14 @@ return result;
     });
     return result;
   }
-  async update(name:string, avatar_url:string, user_id:string){
+  async update(name:string, user_id:string){
     const result= await prisma.users.update({
       where:{
          id:user_id,
       },
       data:{
       name,
-      avatar_url
+      
       }
     });
     return result;

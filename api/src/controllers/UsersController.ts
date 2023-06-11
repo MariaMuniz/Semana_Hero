@@ -1,16 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 import { UsersServices } from "../services/UsersServices";
-
+import { s3 } from '../config/aws';
 class UsersController{
   private usersServices : UsersServices;
   constructor(){
     this.usersServices = new UsersServices()
   }
   index(){
-
+ //buscar todos
   }
   show(){
-
+ //buscar somente um
   }
  async store(request:Request, response:Response, next:NextFunction){
     const {name, email, password}= request.body
@@ -48,7 +48,8 @@ async refresh(request:Request, response:Response, next:NextFunction){
     const {name, oldPassword, newPassword}= request.body;
     const {user_id}= request;
     try {
-      const result = this.usersServices.update({name, oldPassword, newPassword,user_id})
+      const result = this.usersServices.update({
+        name, oldPassword, newPassword, user_id});
       return response.status(200).json(result);
     } catch (error) {
       next(error);

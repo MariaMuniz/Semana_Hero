@@ -14,8 +14,8 @@ const usersRoutes = new UsersRoutes().getRoutes()
 const schedulesRoutes = new SchedulesRoutes().getRoutes();
 
 app.use('/schedules', schedulesRoutes);
-const upload = multer()
-app.use('/users', upload.any(), usersRoutes);
+
+app.use('/users', usersRoutes);
 
 
 app.use(

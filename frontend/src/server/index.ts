@@ -54,9 +54,9 @@ if (originalRequest?.headers){
 }   
 }
   }else{
-    localStorage.removeItem('token:semana-heroi');
-    localStorage.removeItem('refles_token:semana-heroi');
-    localStorage.removeItem('user:semana-heroi');
+    //localStorage.removeItem('token:semana-heroi');
+    //localStorage.removeItem('refles_token:semana-heroi');
+   // localStorage.removeItem('user:semana-heroi');
   }
 return Promise.reject(error);
   },

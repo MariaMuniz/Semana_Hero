@@ -26,7 +26,6 @@ class UsersServices{
   name,
    oldPassword,
     newPassword,
-   
     user_id
 }:IUpdate){
   let password
@@ -41,12 +40,12 @@ class UsersServices{
     }
     password= await hash(newPassword, 10)
     await this.usersRepository.updatePassword(newPassword,user_id);
-  }
-  await this.usersRepository.update(name, user_id, avatar_url);
+    }
+  await this.usersRepository.update(name, user_id);
   return {
     message:'User update successfully.'
-  }
- 
+  
+}
 }
 
 

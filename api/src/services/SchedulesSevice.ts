@@ -39,22 +39,40 @@ throw new Error('It is not allowed to schedules old date');
     });
     return create
 }
+
+
 async index(date:Date){
   const result = await this.schedulesRepository.findAll(date);
 
 return result;
 }
+
 async update(id: string , date: Date, user_id:string){
+  
   const dateFormatted =new Date(date);
   const hourStart = startOfHour(dateFormatted);
   if(isBefore(hourStart, new Date())){
 throw new Error('It is not allowed to schedules old')
   }
-   const checkIsAvailable = await this.schedulesRepository.find(hourStart, user_id);
+   const checkIsAvailable = await this.schedulesRepository.find(
+    hourStart, 
+    user_id);
   if(checkIsAvailable){
     throw new Error('Schedule date is not available');
   }
   const result =await this.schedulesRepository.update(id, date);
+  return result;
+}
+
+async delete(id: string) {
+  const checkExists = await this.schedulesRepository.findById(id);
+
+  if (!checkExists) {
+    throw new Error('Schedule doenst exists');
+  }
+
+  const result = await this.schedulesRepository.delete(id);
+
   return result;
 }
 }

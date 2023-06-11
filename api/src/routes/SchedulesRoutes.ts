@@ -25,7 +25,11 @@ class SchedulesRoutes{
     this.router.put('/:id', 
     this.schedulesController.update.bind(this.schedulesController),
     );
-
+    this.router.delete(
+      '/:id',
+      this.authMiddleware.auth.bind(this.authMiddleware),
+      this.schedulesController.delete.bind(this.schedulesController),
+    );
 
     return this.router
 }
